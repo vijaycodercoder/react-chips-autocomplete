@@ -1,0 +1,42 @@
+# Dependency directories
+node_modules/
+
+# Optional: Logs and debugging files
+npm-debug.log
+yarn-error.log
+debug.log
+
+# Optional: OS generated files
+.DS_Store
+Thumbs.db
+
+# Optional: Environment variables
+.env
+
+# Optional: Build output
+/build
+
+# Optional: Editor configuration
+.vscode/
+.idea/
+
+# Optional: Testing and coverage files
+/coverage
+/.nyc_output
+
+# Optional: Dependency lock files
+yarn.lock
+package-lock.json
+
+# Optional: Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional: Output of npm's 'pack' command
+*.tgz
+
+# Optional: Next.js specific
+.next/
+out/

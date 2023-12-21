@@ -1,0 +1,30 @@
+{
+  "name": "react-chips-autocomplete",
+  "version": "1.0.0",
+  "description": "AutoCompleteChips is a versatile React component that combines an autocomplete input with a chip/tag display. It enables users to effortlessly input values by providing autocomplete suggestions and visually presents selected items as interactive chips. Customize the appearance and behavior of the component to seamlessly integrate it into your React applications.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonJS --outDir dist/cjs"
+  },
+  "author": "vijaykrishnan",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
