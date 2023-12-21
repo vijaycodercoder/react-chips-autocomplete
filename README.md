@@ -129,7 +129,3 @@ const chipMargin = 2; // in px
 crossFillColor (String)
 Fill color of the delete icon in the chips. Example:
 const crossFillColor = 'white';
-
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
