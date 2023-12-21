@@ -26,7 +26,7 @@ function App() {
 
   return (
     <AutoCompleteChips
-      Data={Data}
+      Data={Data} // must
       listOnClick={(data) => console.log(data)}
       chipDeleteOnClick={(data) => console.log(data)}
       width={10}
@@ -91,41 +91,51 @@ const handleChipDelete = (deletedChip) => {
 
 width (Number)
 Width of the component. Example:
-const width = 10; // in em or px
+
+const width = 10;
 
 height (Number)
 Height of the input. Example:
-const height = 2; // in em or px
+
+const height = 2;
 
 
 borderRadius (Number)
 Border radius of the input. Example:
-const borderRadius = 5; // in px
+
+const borderRadius = 5;
 
 borderWidth (Number)
 Border width of the input. Example:
-const borderWidth = 1; // in px
+
+const borderWidth = 1;
 
 borderColor (String)
 Border color of the input. Example:
+
 const borderColor = 'lightblue';
 
 chipBgColor (String)
 Background color of the chips. Example:
+
 const chipBgColor = 'red';  
 
 chipTextColor (String)
 Text color of the chips. Example:
+
 const chipTextColor = 'white';
 
 chipfontSize (Number)
 Font size of the chips. Example:
-const chipfontSize = 12; // in px
+
+const chipfontSize = 12;
 
 chipMargin (Number)
 Margin of the chips. Example:
+
 const chipMargin = 2; // in px
 
 crossFillColor (String)
 Fill color of the delete icon in the chips. Example:
+
 const crossFillColor = 'white';
