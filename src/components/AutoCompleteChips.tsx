@@ -10,7 +10,6 @@ interface AutoCompleteChipsProps {
     Data: Chip[];
     listOnClick: (data: Chip) => void;
     chipDeleteOnClick: (data: Chip) => void;
-    onChange: (data: string) => void;
     chipsData?: Chip[];
     width?: number;
     height?: number;
@@ -29,7 +28,6 @@ export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
     Data,
     listOnClick,
     chipDeleteOnClick,
-    onChange,
     chipsData = [],
     width = 20,
     height = 2,
@@ -54,14 +52,12 @@ export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
     }, [chipsData]);
 
     useEffect(() => {
-        if (Data) {
-            const filtered = Data.filter((e) =>
-                e.label.toLowerCase().includes(inputValue.toLowerCase())
-            );
-            setFilteredData(filtered);
-        } else {
-            setFilteredData([{ label: 'No Data available', id: 1 }]);
-        }
+
+        const filtered = Data.filter((e) =>
+            e.label.toLowerCase().includes(inputValue.toLowerCase())
+        );
+        setFilteredData(filtered);
+
     }, [inputValue, Data]);
 
 
@@ -125,7 +121,6 @@ export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
                 type='text'
                 value={inputValue}
                 onChange={(e) => {
-                    onChange(e.target.value)
                     setInputValue(e.target.value)
                 }}
             />
@@ -148,7 +143,7 @@ export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
                     ))
                 ) : (
                     <p className='dropdown'>
-                        {Data && Data.length > 0 ? 'No options' : 'Add data'}
+                        {Data && Data.length > 0 ? 'No options' : 'Add Data[]'}
                     </p>
                 )
             ) : null}

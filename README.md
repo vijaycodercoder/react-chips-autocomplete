@@ -29,7 +29,6 @@ function App() {
       Data={Data} // must add Data[]
       listOnClick={(data) => console.log(data)}
       chipDeleteOnClick={(data) => console.log(data)}
-      onChange={(data) => console.log(data)}
       width={10}
       height={2}
       borderRadius={0}
@@ -99,10 +98,6 @@ A callback function triggered when a user deletes a chip. It receives the delete
 const handleChipDelete = (deletedChip) => {
   console.log('Deleted Chip:', deletedChip);
 };
-
-onChange
-Type: (data: Chip) => void
-Description: A callback function triggered when a user adds a chip. It receives the added chip's data as an argument.
 
 width (Number)
 Width of the component. Example:
