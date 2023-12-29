@@ -26,7 +26,7 @@ function App() {
 
   return (
     <AutoCompleteChips
-      Data={Data} // must
+      Data={Data} // must add Data[]
       listOnClick={(data) => console.log(data)}
       chipDeleteOnClick={(data) => console.log(data)}
       width={10}
@@ -39,6 +39,7 @@ function App() {
       chipfontSize={12}
       chipMargin={2}
       crossFillColor='white'
+      placeholder='Enter...'
     />
   );
 }
@@ -64,6 +65,15 @@ Props
 
 ## Props
 
+## CSS Class Names
+textinput
+Description: The input field of the AutoCompleteChips component.
+chipcontainer
+Description: The container for displaying the chips.
+chipsubdiv
+Description: The container for each individual chip.
+
+
 #### `Data` (Array)
 
 An array of objects representing the data for autocomplete. Each object should have at least a `label` and an `id`. Example:
@@ -88,6 +98,10 @@ A callback function triggered when a user deletes a chip. It receives the delete
 const handleChipDelete = (deletedChip) => {
   console.log('Deleted Chip:', deletedChip);
 };
+
+onChange
+Type: (data: Chip) => void
+Description: A callback function triggered when a user adds a chip. It receives the added chip's data as an argument.
 
 width (Number)
 Width of the component. Example:
@@ -139,3 +153,5 @@ crossFillColor (String)
 Fill color of the delete icon in the chips. Example:
 
 const crossFillColor = 'white';
+
+Placeholder = "The placeholder text for the input field."

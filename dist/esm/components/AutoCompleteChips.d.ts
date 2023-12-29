@@ -7,6 +7,7 @@ interface AutoCompleteChipsProps {
     Data: Chip[];
     listOnClick: (data: Chip) => void;
     chipDeleteOnClick: (data: Chip) => void;
+    onChange: (data: string) => void;
     chipsData?: Chip[];
     width?: number;
     height?: number;
@@ -18,6 +19,7 @@ interface AutoCompleteChipsProps {
     chipfontSize?: number;
     chipMargin?: number;
     crossFillColor?: string;
+    placeholder?: string;
 }
 export declare const AutoCompleteChips: FC<AutoCompleteChipsProps>;
 export {};

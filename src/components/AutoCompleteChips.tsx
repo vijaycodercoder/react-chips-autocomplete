@@ -5,10 +5,12 @@ interface Chip {
     label: string;
 }
 
+
 interface AutoCompleteChipsProps {
     Data: Chip[];
     listOnClick: (data: Chip) => void;
     chipDeleteOnClick: (data: Chip) => void;
+    onChange: (data: string) => void;
     chipsData?: Chip[];
     width?: number;
     height?: number;
@@ -20,12 +22,14 @@ interface AutoCompleteChipsProps {
     chipfontSize?: number;
     chipMargin?: number;
     crossFillColor?: string;
+    placeholder?: string;
 }
 
 export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
     Data,
     listOnClick,
     chipDeleteOnClick,
+    onChange,
     chipsData = [],
     width = 20,
     height = 2,
@@ -37,6 +41,7 @@ export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
     chipfontSize = 18,
     chipMargin = 1,
     crossFillColor = 'black',
+    placeholder = 'Type and press Enter',
 }) => {
     const [chips, setChips] = useState<Chip[]>([]);
     const [inputValue, setInputValue] = useState('');
@@ -49,11 +54,16 @@ export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
     }, [chipsData]);
 
     useEffect(() => {
-        const filtered = Data.filter((e) =>
-            e.label.toLowerCase().includes(inputValue.toLowerCase())
-        );
-        setFilteredData(filtered);
+        if (Data) {
+            const filtered = Data.filter((e) =>
+                e.label.toLowerCase().includes(inputValue.toLowerCase())
+            );
+            setFilteredData(filtered);
+        } else {
+            setFilteredData([{ label: 'No Data available', id: 1 }]);
+        }
     }, [inputValue, Data]);
+
 
     const container: CSSProperties = {
         width: `${width}em`,
@@ -111,27 +121,37 @@ export const AutoCompleteChips: FC<AutoCompleteChipsProps> = ({
             <input
                 style={textinput}
                 className='textinput'
+                placeholder={placeholder}
                 type='text'
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => {
+                    onChange(e.target.value)
+                    setInputValue(e.target.value)
+                }}
             />
-            {inputValue.trim() !== '' && (
-                filteredData.map((e) => (
-                    <p
-                        className='dropdown'
-                        key={e.id}
-                        onClick={() => {
-                            if (!chips.some((v) => v.id === e.id)) {
-                                setChips((prevChips) => [...prevChips, { label: e.label, id: e.id }]);
-                            }
-                            setInputValue('');
-                            listOnClick(e);
-                        }}
-                    >
-                        {e.label}
+            {inputValue.trim() !== '' ? (
+                filteredData.length > 0 ? (
+                    filteredData.map((e) => (
+                        <p
+                            className='dropdown'
+                            key={e.id}
+                            onClick={() => {
+                                if (!chips.some((v) => v.id === e.id)) {
+                                    setChips((prevChips) => [...prevChips, { label: e.label, id: e.id }]);
+                                }
+                                setInputValue('');
+                                listOnClick(e);
+                            }}
+                        >
+                            {e.label}
+                        </p>
+                    ))
+                ) : (
+                    <p className='dropdown'>
+                        {Data && Data.length > 0 ? 'No options' : 'Add data'}
                     </p>
-                ))
-            )}
+                )
+            ) : null}
         </div>
     );
 };
@@ -147,6 +167,7 @@ AutoCompleteChips.defaultProps = {
     chipfontSize: 18,
     chipMargin: 1,
     crossFillColor: 'black',
+
 };
 
 
