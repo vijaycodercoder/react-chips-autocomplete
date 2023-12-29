@@ -29,6 +29,7 @@ function App() {
       Data={Data} // must add Data[]
       listOnClick={(data) => console.log(data)}
       chipDeleteOnClick={(data) => console.log(data)}
+      onChange={(data) => console.log(data)}
       width={10}
       height={2}
       borderRadius={0}
